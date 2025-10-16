@@ -1,0 +1,15 @@
+<h2>Asteroids from {{ startdate }} to {{ enddate }}</h2>
+
+{% for date, asteroids in asteroids_by_date.items() %}
+  <h3>{{ date }}</h3>
+  <ul>
+    {% for asteroid in asteroids %}
+      <li>
+        Name: {{ asteroid.name }}, Diameter: {{ asteroid.diameter }} m,
+        Hazardous: {{ asteroid.hazardous }}, Speed: {{ asteroid.speed }} km/h,
+        Miss Distance: {{ asteroid.miss_distance }} km
+      </li>
+    {% endfor %}
+  </ul>
+{% endfor %}
+

@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="text-align: center; margin-top: 50px; font-family: Arial, sans-serif;">
+    <h1 style="color: #1a1a1a;">Astro Monitor ☄️</h1>
+    <p style="font-size: 1.1em; color: #333;">Your tool for monitoring asteroids</p>
+    <h3 style="margin-top: 30px;">Select a date range</h3>
+    <h5 style="margin-top: 10px;">Date range can be 7 days max</h5>
+
+    <form action="" method="POST" name="myform" style="display: inline-block; text-align: left; margin-top: 20px; padding: 20px; border: 1px solid #ddd; border-radius: 10px; background-color: #f9f9f9; min-width: 320px;">
+        {{ form.hidden_tag() }}
+
+        <div class="form-row">
+            {{ form.startdate.label }}
+            <div class="input-wrapper">
+                {{ form.startdate(class="datepicker") }}
+                <span class="error">{% for error in form.startdate.errors %}{{ error }}{% endfor %}</span>
+            </div>
+        </div>
+
+        <div class="form-row">
+            {{ form.enddate.label }}
+            <div class="input-wrapper">
+                {{ form.enddate(class="datepicker") }}
+                <span class="error">{% for error in form.enddate.errors %}{{ error }}{% endfor %}</span>
+            </div>
+        </div>
+
+        <p style="text-align: center; margin-top: 20px;">
+            {{ form.submit(class="btn-submit") }}
+        </p>
+    </form>
+</div>
+
+<style>
+    .form-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start; /* allow error below input */
+        margin-bottom: 15px;
+    }
+
+    .form-row label {
+        flex: 1;
+        margin-right: 10px;
+        text-align: right;
+        font-weight: bold;
+        padding-top: 8px; /* align with input */
+    }
+
+    .input-wrapper {
+        flex: 1;
+        display: flex;
+        flex-direction: column; /* stack input + error */
+    }
+
+    .datepicker {
+        width: 180px;
+        padding: 8px 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1em;
+        box-sizing: border-box;
+    }
+
+    .btn-submit {
+        padding: 10px 20px;
+        background-color: #1a73e8;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1em;
+    }
+
+    .btn-submit:hover {
+        background-color: #1558b0;
+    }
+
+    .error {
+        color: red;
+        font-size: 0.85em;
+        min-height: 18px; /* reserve space even if no error */
+        margin-top: 3px;
+    }
+</style>
+{% endblock %}
